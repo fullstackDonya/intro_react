@@ -13,7 +13,7 @@ Installation
 
 Clonez ce dépôt :
 
-git clone <url-du-repo-frontend>
+git clone <https://github.com/fullstackDonya/intro_react>
 
 Naviguez dans le dossier du frontend :
 

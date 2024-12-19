@@ -9,7 +9,7 @@ const UpdateUser = () => {
   const navigate = useNavigate();
   const { id } = useParams(); // Récupère l'ID de l'URL
 
-  // Utilisez `useEffect` pour récupérer les données de l'utilisateur au chargement du composant
+
   useEffect(() => {
     axios
       .get(`http://localhost:8080/users/${id}`, {
@@ -18,7 +18,7 @@ const UpdateUser = () => {
         },
       })
       .then((response) => {
-        setUsername(response.data.username); // Remplir les champs avec les données de l'utilisateur
+        setUsername(response.data.username); 
         setEmail(response.data.email);
       })
       .catch((error) => {

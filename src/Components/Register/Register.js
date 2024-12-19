@@ -18,7 +18,7 @@ const Register = () => {
       })
       .then((response) => {
         alert("Compte crée avec succès");
-        navigate("/login");
+        navigate("/");
       })
       .catch((error) => {
         alert("Erreur lors de la création du compte");

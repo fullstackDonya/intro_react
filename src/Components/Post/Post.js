@@ -9,50 +9,46 @@ const Post = () => {
   const [price, setPrice] = useState("");
   const [category, setCategory] = useState("");
   const [location, setLocation] = useState("");
-  const [contactInfo, setContactInfo] = useState({ phone: "", email: "" });
   const [images, setImages] = useState([]);
   const navigate = useNavigate();
 
   const token = localStorage.getItem("token");
   const createdAt = new Date().toISOString();
 
+
   const handleFileChange = (e) => {
     setImages(e.target.files); // Capture les fichiers sélectionnés
   };
 
   const handlePost = () => {
-    const formData = new FormData();
-
-    // Ajouter les champs texte au FormData
-    formData.append("title", title);
-    formData.append("description", description);
-    formData.append("price", price);
-    formData.append("category", category);
-    formData.append("location", location);
-    formData.append("phone", contactInfo.phone);
-    formData.append("email", contactInfo.email);
-    formData.append("createdAt", createdAt);
-
-    // Ajouter chaque fichier image au FormData
-    for (let i = 0; i < images.length; i++) {
-      formData.append("images", images[i]);
-    }
 
     axios
-      .post("http://localhost:8080/post", formData, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "multipart/form-data", // Obligatoire pour FormData
+      .post(
+        "http://localhost:8080/post",
+        {
+          title: title,
+          description: description,
+          price: price,
+          category: category,
+          location: location,
+          createdAt: createdAt,
+          // author: userId
         },
-      })
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
       .then((response) => {
-        alert("Post créé avec succès !");
+        alert("Recette créée avec succès !");
         navigate("/home");
       })
       .catch((error) => {
-        alert("Erreur lors de la création du post : " + error.message);
+        alert("Erreur lors de la création de la recette");
       });
-  };
+    
+};
 
   return (
     <div className="post-form">
@@ -91,24 +87,7 @@ const Post = () => {
         onChange={(e) => setLocation(e.target.value)}
         required
       />
-      <input
-        type="text"
-        placeholder="Téléphone"
-        value={contactInfo.phone}
-        onChange={(e) =>
-          setContactInfo({ ...contactInfo, phone: e.target.value })
-        }
-        required
-      />
-      <input
-        type="email"
-        placeholder="Email"
-        value={contactInfo.email}
-        onChange={(e) =>
-          setContactInfo({ ...contactInfo, email: e.target.value })
-        }
-        required
-      />
+  
       <input
         type="file"
         multiple

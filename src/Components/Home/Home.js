@@ -58,13 +58,14 @@ const Home = () => {
         {posts.map((post) => (
           <li key={post._id}> {/* Utilisez '_id' si c'est le nom de la clé MongoDB */}
             <p><strong>Titre :</strong> {post.title}</p>
-            <p><strong>Ingrédients :</strong> {post.ingredients}</p>
-            <p><strong>Instructions :</strong> {post.instructions}</p>
-            <p><strong>Type de cuisine :</strong> {post.cuisineType}</p>
+            <p><strong>Description :</strong> {post.description}</p>
+            <p><strong>category :</strong> {post.category}</p>
+            <p><strong>Price :</strong> {post.price}</p>
+            <p><strong>isSold :</strong> {post.isSold}</p>
             <p><strong>Date :</strong> {post.createdAt}</p>
             
-            <button className="update" onClick={() => handleEdit(recipe._id)}>Modifier</button>
-            <button className="delete" onClick={() => handleDelete(recipe._id)}>Effacer</button>
+            <button className="update" onClick={() => handleEdit(post._id)}>Modifier</button>
+            <button className="delete" onClick={() => handleDelete(post._id)}>Effacer</button>
           </li>
         ))}
       </ul>

@@ -10,10 +10,11 @@ const EditPost = () => {
   const [price, setPrice] = useState("");
   const [category, setCategory] = useState("");
   const [location, setLocation] = useState("");
-  const [contactInfo, setContactInfo] = useState({ phone: "", email: "" });
-  const [images, setImages] = useState([]);
+  const [currentImages, setCurrentImages] = useState([]); // Images actuelles
+  const [newImages, setNewImages] = useState([]); // Nouvelles images
   const navigate = useNavigate();
 
+  // Récupération des données actuelles du post
   useEffect(() => {
     axios
       .get(`http://localhost:8080/post/${id}`, {
@@ -28,39 +29,45 @@ const EditPost = () => {
         setPrice(post.price);
         setCategory(post.category);
         setLocation(post.location);
-        setContactInfo(post.contactInfo);
-        setImages(post.images || []);
+
+        setCurrentImages(post.images || []); // Charger les images existantes
       })
       .catch((error) => {
         console.error("Erreur lors de la récupération du post", error);
+        alert("Impossible de charger les données du post.");
       });
   }, [id]);
 
+  // Gestion des nouvelles images sélectionnées
   const handleFileChange = (e) => {
-    setImages(e.target.files); // Capture les fichiers sélectionnés
+    setNewImages(e.target.files); // Capture les nouvelles images
   };
 
+  // Soumission du formulaire pour mettre à jour le post
   const handleSubmit = (e) => {
     e.preventDefault();
+
     const formData = new FormData();
     formData.append("title", title);
     formData.append("description", description);
     formData.append("price", price);
     formData.append("category", category);
     formData.append("location", location);
-    formData.append("contactInfo[phone]", contactInfo.phone);
-    formData.append("contactInfo[email]", contactInfo.email);
+    formData.append("phone", contactInfo.phone);
+    formData.append("email", contactInfo.email);
 
     // Ajouter les nouvelles images au FormData
-    for (let i = 0; i < images.length; i++) {
-      formData.append("images", images[i]);
+    for (let i = 0; i < newImages.length; i++) {
+      formData.append("images", newImages[i]);
     }
+
+    // Ajouter une liste des images actuelles à conserver
+    formData.append("currentImages", JSON.stringify(currentImages));
 
     axios
       .put(`http://localhost:8080/post/${id}`, formData, {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("token"),
-          "Content-Type": "multipart/form-data",
         },
       })
       .then(() => {
@@ -69,6 +76,7 @@ const EditPost = () => {
       })
       .catch((error) => {
         console.error("Erreur lors de la mise à jour du post", error);
+        alert("Erreur lors de la mise à jour du post.");
       });
   };
 
@@ -114,16 +122,39 @@ const EditPost = () => {
           type="text"
           placeholder="Téléphone"
           value={contactInfo.phone}
-          onChange={(e) => setContactInfo({ ...contactInfo, phone: e.target.value })}
+          onChange={(e) =>
+            setContactInfo({ ...contactInfo, phone: e.target.value })
+          }
           required
         />
         <input
           type="email"
           placeholder="Email"
           value={contactInfo.email}
-          onChange={(e) => setContactInfo({ ...contactInfo, email: e.target.value })}
+          onChange={(e) =>
+            setContactInfo({ ...contactInfo, email: e.target.value })
+          }
           required
         />
+
+        {/* Aperçu des images actuelles */}
+        <div className="current-images">
+          <h3>Images actuelles :</h3>
+          {currentImages.length > 0 ? (
+            currentImages.map((image, index) => (
+              <img
+                key={index}
+                src={`http://localhost:8080/uploads/${image}`}
+                alt={`Image ${index + 1}`}
+                className="preview-image"
+              />
+            ))
+          ) : (
+            <p>Aucune image disponible</p>
+          )}
+        </div>
+
+        {/* Ajout de nouvelles images */}
         <input
           type="file"
           multiple

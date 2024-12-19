@@ -12,12 +12,21 @@ const UpdateUser = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8080/users/${id}`, {
+      .get(`http://localhost:8080/user/${id}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       })
       .then((response) => {
+        const user = response.data; 
+
+        if (user) {
+          setUsername(user.username);
+          setEmail(user.email);
+         
+        } else {
+          alert("User non trouvé.");
+        }
         setUsername(response.data.username); 
         setEmail(response.data.email);
       })

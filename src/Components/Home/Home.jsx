@@ -32,6 +32,9 @@ const Home = () => {
   const handleEdit = (id) => {
     navigate(`/edit_post/${id}`); 
   };
+  const handleGet = (id) => {
+    navigate(`/get_post/${id}`); 
+  };
 
   const handleDelete = (id) => {
     if (window.confirm("Voulez-vous vraiment supprimer cette recette ?")) {
@@ -79,6 +82,7 @@ const Home = () => {
                 ))}
               </div>
             )}
+            <button className="update" onClick={() => handleGet(post._id)}>Afficher</button>
 
             <button className="update" onClick={() => handleEdit(post._id)}>Modifier</button>
             <button className="delete" onClick={() => handleDelete(post._id)}>Effacer</button>

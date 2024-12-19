@@ -6,6 +6,7 @@ import Login from "./Components/Login/Login";
 import Home from "./Components/Home/Home";
 import AddPost from "./Components/Post/AddPost";
 import EditPost from "./Components/Post/EditPost";
+import GetPost from "./Components/Post/GetPost";
 import Users from "./Components/Users/Users";
 import AddUser from "./Components/Users/AddUser";
 import UpdateUser from "./Components/Users/UpdateUser";
@@ -25,6 +26,7 @@ function App() {
           <Route path="/add_user" element={<AddUser />} />
           <Route path="/edit_user/:id" element={<UpdateUser />} />
           <Route path="/edit_post/:id" element={<EditPost />} />
+          <Route path="/get_post/:id" element={<GetPost />} />
         </Routes>
       </BrowserRouter>
     </div>

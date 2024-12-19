@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Post.css";
 
-const Post = () => {
+const AddPost = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
@@ -99,4 +99,4 @@ const Post = () => {
   );
 };
 
-export default Post;
+export default AddPost;

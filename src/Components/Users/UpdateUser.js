@@ -30,7 +30,7 @@ const UpdateUser = () => {
     e.preventDefault();
     axios
       .put(
-        `http://localhost:8080/update/${id}`, // Passer l'ID dans l'URL
+        `http://localhost:8080/update/${id}`, 
         { username, email },
         {
           headers: {

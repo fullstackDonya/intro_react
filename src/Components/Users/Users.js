@@ -16,7 +16,7 @@ const Users = () => {
         },
       })
       .then((response) => {
-        setUsers(response.data); // Assurez-vous que `response.data` contient la liste des utilisateurs
+        setUsers(response.data); 
       })
       .catch((error) => {
         console.error("Erreur lors de la récupération des utilisateurs :", error);

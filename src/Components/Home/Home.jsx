@@ -5,6 +5,8 @@ import "./Home.css";
 
 const Home = () => {
   const [posts, setPosts] = useState([]);
+  console.log(posts);
+  
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -16,7 +18,7 @@ const Home = () => {
       })
       .then((response) => {
         console.log(response.data);
-        setPosts(response.data); 
+        setPosts(response.data);
       })
       .catch((error) => {
         console.error("Erreur lors de la récupération des recettes", error);
@@ -24,11 +26,11 @@ const Home = () => {
   }, []);
 
   const handleAdd = () => {
-    navigate("/post"); // Redirige vers la page d'ajout d'une recette
+    navigate("/post"); 
   };
 
   const handleEdit = (id) => {
-    navigate(`/edit_post/${id}`); // Redirige vers la page de modification avec l'ID de la recette
+    navigate(`/edit_post/${id}`); 
   };
 
   const handleDelete = (id) => {
@@ -56,14 +58,28 @@ const Home = () => {
       <button className="add" onClick={handleAdd}>Ajouter une recette</button>
       <ul>
         {posts.map((post) => (
-          <li key={post._id}> {/* Utilisez '_id' si c'est le nom de la clé MongoDB */}
+          <li key={post._id}>
             <p><strong>Titre :</strong> {post.title}</p>
             <p><strong>Description :</strong> {post.description}</p>
-            <p><strong>category :</strong> {post.category}</p>
-            <p><strong>Price :</strong> {post.price}</p>
-            <p><strong>isSold :</strong> {post.isSold}</p>
+            <p><strong>Catégorie :</strong> {post.category}</p>
+            <p><strong>Prix :</strong> {post.price}</p>
+            <p><strong>Vendu :</strong> {post.isSold ? 'Oui' : 'Non'}</p>
             <p><strong>Date :</strong> {post.createdAt}</p>
-            
+
+            {/* Affichage des images si elles existent */}
+            {post.images && post.images.length > 0 && (
+              <div className="post-images">
+                {post.images.map((image, index) => (
+                  <img
+                    key={index}
+                    src={`http://localhost:8080/uploads/${image}`} 
+                    alt={`Image ${index + 1}`}
+                    className="post-image"
+                  />
+                ))}
+              </div>
+            )}
+
             <button className="update" onClick={() => handleEdit(post._id)}>Modifier</button>
             <button className="delete" onClick={() => handleDelete(post._id)}>Effacer</button>
           </li>

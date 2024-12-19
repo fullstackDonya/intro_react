@@ -4,8 +4,8 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Register from "./Components/Register/Register";
 import Login from "./Components/Login/Login";
 import Home from "./Components/Home/Home";
-import Recipe from "./Components/Recipe/Recipe";
-import EditRecipe from "./Components/Recipe/EditRecipe";
+import Post from "./Components/Post/Post";
+import EditPost from "./Components/Post/EditPost";
 import Users from "./Components/Users/Users";
 import AddUser from "./Components/Users/AddUser";
 import UpdateUser from "./Components/Users/UpdateUser";
@@ -18,11 +18,11 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/" element={<Login />} />
           <Route path="/home" element={<Home />} />
-          <Route path="/recipe" element={<Recipe />} />
+          <Route path="/post" element={<Post />} />
           <Route path="/users" element={<Users />} />
           <Route path="/add_user" element={<AddUser />} />
           <Route path="/edit_user/:id" element={<UpdateUser />} /> 
-          <Route path="/edit_recipe/:id" element={<EditRecipe />} /> 
+          <Route path="/edit_post/:id" element={<EditPost />} /> 
         </Routes>
       </BrowserRouter>
     </div>

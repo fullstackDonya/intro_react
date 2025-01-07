@@ -57,5 +57,5 @@ services/ : Gestion des appels API avec Axios
 
 Important
 
-Assurez-vous que le backend est lancé et accessible avant d'utiliser le frontend.
+Le backend  doit être lancé et accessible avant d'utiliser le frontend.
 

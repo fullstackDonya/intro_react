@@ -59,10 +59,7 @@ ______________________________________
     "/uploads/images/image1.jpg",
     "/uploads/images/image2.jpg"
   ],
-  "contactInfo": {
-    "phone": "0123456789",
-    "email": "contact@example.com"
-  },
+
   "isSold": false,
   "author": "64c6d8e4e456a3c1b12ef4ab"
 }

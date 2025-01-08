@@ -9,29 +9,29 @@ Prérequis
 Node.js installé (version 14 ou supérieure)
 npm ou yarn pour la gestion des paquets
 Installation
-Clonez ce dépôt :
+Cloner ce dépôt :
 
 
 
 git clone https://github.com/fullstackDonya/intro_react
-Naviguez dans le dossier du frontend :
+Naviguer dans le dossier du frontend :
 
 
 
 cd frontend
-Installez les dépendances :
+Installer les dépendances :
 
 
 
 npm install
 Configuration
-Créez un fichier .env à la racine avec la variable suivante :
+Créer un fichier .env à la racine avec la variable suivante :
 
 env
 
 REACT_APP_API_URL=http://localhost:8080
 Lancement
-Lancez l'application :
+Lancer l'application :
 
 
 
@@ -57,25 +57,25 @@ Prérequis
 Node.js installé (version 14 ou supérieure)
 MongoDB installé et en cours d'exécution localement ou accessible via un service cloud
 Installation
-Naviguez dans le dossier du backend :
+Naviguer dans le dossier du backend :
 
 
 
 cd backend
-Installez les dépendances :
+Installer les dépendances :
 
 
 
 npm install
 Configuration
-Créez un fichier .env à la racine avec les variables suivantes :
+Créer un fichier .env à la racine avec les variables suivantes :
 
 env
 
 PORT=8080
 MONGO_URI=mongodb://localhost:27017/annonces
 Lancement
-Lancez le serveur backend :
+Lancer le serveur backend :
 
 
 
@@ -94,7 +94,7 @@ Le projet utilise Docker pour la conteneurisation du backend, du frontend et de 
 Prérequis
 Docker et Docker Compose installés
 Utilisation
-Construisez et démarrez les conteneurs :
+Construiser et démarrer les conteneurs :
 
 
 
@@ -118,7 +118,7 @@ Prérequis
 kubectl installé
 Un cluster Kubernetes fonctionnel (Minikube, Docker Desktop Kubernetes, ou un service cloud)
 Déploiement
-Appliquez les fichiers de configuration Kubernetes pour chaque composant :
+Appliquer les fichiers de configuration Kubernetes pour chaque composant :
 
 
 
@@ -131,7 +131,7 @@ kubectl apply -f frontend-service.yaml
 kubectl apply -f mongo-deployment.yaml
 kubectl apply -f mongo-service.yaml
 kubectl apply -f mongo-data.yaml
-Vérifiez que les pods, services et déploiements sont actifs :
+Vérifier que les pods, services et déploiements sont actifs :
 
 
 

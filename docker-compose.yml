@@ -5,8 +5,9 @@ services:
     build:
       context: ./backend
     container_name: backend
+    image: frontend-image:latest  
     ports:
-      - "8080:8080"
+      - "8081:8080"
     environment:
       - MONGO_URL=mongodb://mongo:27017/leboncoin
     depends_on:
@@ -24,10 +25,26 @@ services:
     build:
       context: ./frontend
     container_name: frontend
+    image: backend-image:latest 
     ports:
       - "3000:3000"
     depends_on:
       - backend
 
+  registry:
+    image: registry:2  
+    container_name: registry_app_react
+    ports:
+      - "5002:5001"
+    volumes:
+      - registry_data:/var/lib/registry
+      - ./auth/htpasswd:/auth/htpasswd
+    environment:
+      REGISTRY_AUTH: "htpasswd"
+      REGISTRY_AUTH_HTPASSWD_REALM: "Registry Realm"
+      REGISTRY_AUTH_HTPASSWD_PATH: "/auth/htpasswd"
+    restart: always
+
 volumes:
+  registry_data:
   mongo-data:

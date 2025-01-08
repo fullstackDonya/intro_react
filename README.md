@@ -117,24 +117,24 @@ kubectl apply -f frontend-service.yaml
 kubectl apply -f nginx-pod.yaml
 kubectl apply -f nginx-srv.yaml
 Vérification
-Vérifiez que les pods sont actifs :
+Vérifier que les pods sont actifs :
 
 kubectl get pods
-Vérifiez les services :
+Vérifier les services :
 
 kubectl get services
-Vérifiez les déploiements :
+Vérifier les déploiements :
 
 kubectl get deployments
 Accès à l'application
-Si un NodePort ou LoadBalancer est configuré pour le frontend, utilisez :
+Si un NodePort ou LoadBalancer est configuré pour le frontend, utiliser :
 
 
 minikube service frontend-service
 Cela ouvrira automatiquement l'application dans votre navigateur.
 
-Sinon, utilisez un port-forward pour accéder au frontend :
+Sinon, utiliser un port-forward pour accéder au frontend :
 
 
 kubectl port-forward svc/frontend-service 3000:3000
-Accédez ensuite à http://localhost:3000.
+Accéder ensuite à http://localhost:3000.

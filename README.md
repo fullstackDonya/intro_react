@@ -11,30 +11,30 @@ npm ou yarn pour la gestion des paquets
 Installation
 Clonez ce dépôt :
 
-bash
-Copier le code
+
+
 git clone https://github.com/fullstackDonya/intro_react
 Naviguez dans le dossier du frontend :
 
-bash
-Copier le code
+
+
 cd frontend
 Installez les dépendances :
 
-bash
-Copier le code
+
+
 npm install
 Configuration
 Créez un fichier .env à la racine avec la variable suivante :
 
 env
-Copier le code
+
 REACT_APP_API_URL=http://localhost:8080
 Lancement
 Lancez l'application :
 
-bash
-Copier le code
+
+
 npm start
 L'application sera accessible à http://localhost:3000.
 
@@ -59,26 +59,26 @@ MongoDB installé et en cours d'exécution localement ou accessible via un servi
 Installation
 Naviguez dans le dossier du backend :
 
-bash
-Copier le code
+
+
 cd backend
 Installez les dépendances :
 
-bash
-Copier le code
+
+
 npm install
 Configuration
 Créez un fichier .env à la racine avec les variables suivantes :
 
 env
-Copier le code
+
 PORT=8080
 MONGO_URI=mongodb://localhost:27017/annonces
 Lancement
 Lancez le serveur backend :
 
-bash
-Copier le code
+
+
 npm start
 Le backend sera accessible à http://localhost:8080.
 
@@ -96,8 +96,8 @@ Docker et Docker Compose installés
 Utilisation
 Construisez et démarrez les conteneurs :
 
-bash
-Copier le code
+
+
 docker-compose up -d
 Les services suivants seront disponibles :
 
@@ -120,8 +120,8 @@ Un cluster Kubernetes fonctionnel (Minikube, Docker Desktop Kubernetes, ou un se
 Déploiement
 Appliquez les fichiers de configuration Kubernetes pour chaque composant :
 
-bash
-Copier le code
+
+
 kubectl apply -f nginx-pod.yaml
 kubectl apply -f nginx-srv.yaml
 kubectl apply -f backend-deployment.yaml
@@ -133,8 +133,8 @@ kubectl apply -f mongo-service.yaml
 kubectl apply -f mongo-data.yaml
 Vérifiez que les pods, services et déploiements sont actifs :
 
-bash
-Copier le code
+
+
 kubectl get pods
 kubectl get services
 kubectl get deployments
